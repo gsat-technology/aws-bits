@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>S3 POST Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div id=message>
+    </div>
+
+    <div class="container" style="margin-top: 20px;">
+      <div class="row">
+        <div class="col-lg-6 col-sm-6 col-12">
+          <div class="jumbotron">
+            <h1>S3 File Upload Demo</h1>
+          </div>
+        </div>
+
+        <form action="https://{{ bucket }}.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="key" value="s3test/${filename}">
+            <input type="hidden" name="AWSAccessKeyId" value="{{ aws_key }}">
+            <input type="hidden" name="acl" value="private">
+            <input type="hidden" name="success_action_redirect" value="http://localhost:8000/success.html">
+            <input type="hidden" name="policy" value="{{ policy }}">
+            <input type="hidden" name="signature" value="{{ signature }}">
+            <input type="hidden" name="Content-Type" value="image/jpeg">
+            <!-- Include any additional input fields here -->
+
+            <input name="file" type="file">
+            <br>
+            <input class="btn" type="submit" value="Upload File to S3">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
