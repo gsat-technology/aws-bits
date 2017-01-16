@@ -1,0 +1,99 @@
+<html>
+<head>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script>
+
+    $(function() {
+
+      //attach the `fileselect` event to all file inputs
+      $(document).on('change', ':file', function() {
+        var input = $(this),
+        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        input.trigger('fileselect', [numFiles, label]);
+      });
+
+      //watch for our custom `fileselect` event like this
+      $(document).ready( function() {
+
+        $(':file').on('fileselect', function(event, numFiles, label) {
+          var input = $(this).parents('.input-group').find(':text'),
+          log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+          if( input.length ) {
+            input.val(log);
+          } else {
+            if( log ) alert(log);
+          }
+        });
+      });
+
+      $('#submitter').click(function() {
+        console.log('click');
+
+        var data = new FormData();
+
+        data.append('policy', 'eyJjb25kaXRpb25zIjogW3siYnVja2V0IjogInMzcHJlc2lnbi5nc2F0LnRlY2hub2xvZ3kifSwgeyJrZXkiOiAidXBsb2Fkcy90ZXN0LnR4dCJ9LCB7IngtYW16LXNlY3VyaXR5LXRva2VuIjogIkZRb0RZWGR6RVA3Ly8vLy8vLy8vL3dFYURFWUJ3QWpwVkpRcVVrUndyeUwyQWV2YWlGT2ZPRkZmQVVQUXZzN3Rhams0TFpYSzdSR3pPanp6alFXZ0ZCQzVhQWtpbXBIalRIY3BCSzFVL0VibDNOZ3N0djFZd0VxREN1VHRRcnpXS2dwK2VFT0tNL1NUOS93RnhsYlpLRzk3RTRuSXJIT3k0SG82WU5YdXNoRDEvUWR0Y0lnSEw4UXViR0oxY1JycGY4S2RWeVViQktCY1ZLVUduYUk3QXV5aW8yRjhTOFNvV0JXdFJTTnpMQ1Z1MllUWTA4YkxPc3FSNW4xeTZ6clJKeGVoeVVIeGRnSjBZajRnS2RqUDBOYWF3MGxkV3NGVVNrdGNCYUF6QWpsZVZ1bzM4OGNCNXFyMDY1UUs1MTNJME9IVW4zYVd6VUNHdGJnWG5VK2puajluTEVadTBxa1I5YzJObm5hTk1GQ2xXMHBDSUZCRE95alNxdkhEQlE9PSJ9XSwgImV4cGlyYXRpb24iOiAiMjAxNy0wMS0xNlQwNzowNjo0MFoifQ==');
+        data.append('AWSAccessKeyId', 'ASIAILRNMNUQCQMVTQZQ');
+        data.append('x-amz-security-token', 'FQoDYXdzEP7//////////wEaDEYBwAjpVJQqUkRwryL2AevaiFOfOFFfAUPQvs7tajk4LZXK7RGzOjzzjQWgFBC5aAkimpHjTHcpBK1U/Ebl3Ngstv1YwEqDCuTtQrzWKgp+eEOKM/ST9/wFxlbZKG97E4nIrHOy4Ho6YNXushD1/QdtcIgHL8QubGJ1cRrpf8KdVyUbBKBcVKUGnaI7Auyio2F8S8SoWBWtRSNzLCVu2YTY08bLOsqR5n1y6zrRJxehyUHxdgJ0Yj4gKdjP0Naaw0ldWsFUSktcBaAzAjleVuo388cB5qr065QK513I0OHUn3aWzUCGtbgXnU+jnj9nLEZu0qkR9c2NnnaNMFClW0pCIFBDOyjSqvHDBQ==');
+        data.append('key', 'uploads/test.txt');
+        data.append('signature', 'MfZ4xB/7kT2QbHVlfJX8D9Y0KvA=');
+        data.append('file', 'xxx');
+
+        console.log(data);
+
+        $.ajax({
+        url: 'https://s3-ap-southeast-2.amazonaws.com/s3presign.gsat.technology',
+        data: data,
+        contentType: false,
+        processData: false,
+        type: 'POST',
+        success: function(data){
+            console.log(data);
+          }
+        });
+      });
+    });
+
+  </script>
+</head>
+<body>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+
+<div class="container" style="margin-top: 20px;">
+    <div class="row">
+
+        <div class="col-lg-6 col-sm-6 col-12">
+            <div class="jumbotron">
+                <h1>Upload a file to S3</h1>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-sm-6 col-12">
+            <div class="input-group">
+                <label class="input-group-btn">
+                    <span class="btn btn-primary">
+                        Browse&hellip; <input type="file" style="display: none;">
+                    </span>
+                </label>
+                <input type="text" class="form-control" readonly>
+            </div>
+            <span class="help-block">
+                select a file to upload
+            </span>
+            <button id="submitter" class="btn btn-primary">submit</button>
+        </div>
+
+
+    </div>
+</div>
+</div>
+<body>
+</html>
