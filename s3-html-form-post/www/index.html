@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>S3 POST Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div id=message>
+    </div>
+
+    <div class="container" style="margin-top: 20px;">
+      <div class="row">
+        <div class="col-lg-6 col-sm-6 col-12">
+          <div class="jumbotron">
+            <h1>S3 File Upload Demo</h1>
+          </div>
+        </div>
+
+        <form action="https://uploader.gsat.technology.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="key" value="uploads/${filename}">
+            <input type="hidden" name="AWSAccessKeyId" value="AKIAISN4NOWBZCBKH27Q">
+            <input type="hidden" name="acl" value="private">
+            <input type="hidden" name="success_action_redirect" value="http://localhost:8000/success.html">
+            <input type="hidden" name="policy" value="eyJleHBpcmF0aW9uIjogIjIwMTgtMDEtMDFUMDA6MDA6MDBaIiwKICAiY29uZGl0aW9ucyI6IFsKICAgIHsiYnVja2V0IjogInVwbG9hZGVyLmdzYXQudGVjaG5vbG9neSJ9LAogICAgWyJzdGFydHMtd2l0aCIsICIka2V5IiwgInVwbG9hZHMvIl0sCiAgICB7ImFjbCI6ICJwcml2YXRlIn0sCiAgICB7InN1Y2Nlc3NfYWN0aW9uX3JlZGlyZWN0IjogImh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9zdWNjZXNzLmh0bWwifSwKICAgIFsic3RhcnRzLXdpdGgiLCAiJENvbnRlbnQtVHlwZSIsICIiXSwKICAgIFsiY29udGVudC1sZW5ndGgtcmFuZ2UiLCAwLCAxMDQ4NTc2XQogIF0KfQo=">
+            <input type="hidden" name="signature" value="l9Hv1bomC0tiwt5r1z26WrqQJos=">
+            <input type="hidden" name="Content-Type" value="image/jpeg">
+            <!-- Include any additional input fields here -->
+
+            <input name="file" type="file">
+            <br>
+            <input class="btn" type="submit" value="Upload File to S3">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

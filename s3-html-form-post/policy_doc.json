@@ -1,6 +1,6 @@
 {"expiration": "2018-01-01T00:00:00Z",
   "conditions": [
-    {"bucket": "<bucket_name"},
+    {"bucket": "<bucket_name>"},
     ["starts-with", "$key", "s3test/"],
     {"acl": "private"},
     {"success_action_redirect": "http://localhost:8000/success.html"},
