@@ -37,7 +37,7 @@ Requires an IAM user with policy:
 
 This is interesting and could be useful in a scenario where someone needs to submit a file to you. It could be hooked up to an S3 event to notify you when the file has been uploaded or do some file validation etc.
 
-#### lambda_plotly
+### lambda_plotly
 
 Does a call to [Plotly](https://plot.ly) to append a row to a grid.
 
