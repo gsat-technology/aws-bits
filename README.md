@@ -37,3 +37,21 @@ Requires an IAM user with policy:
 
 This is interesting and could be useful in a scenario where someone needs to submit a file to you. It could be hooked up to an S3 event to notify you when the file has been uploaded or do some file validation etc.
 
+#### lambda_plotly
+
+Does a call to [Plotly](https://plot.ly) to append a row to a grid.
+
+The Plotly python package uses configuration files which are located at ~/.plotly. Lambda doesn't like to read/write this specific location and it doesn't look like the location is configurable. No matter; using the HTTP API instead of Python SDK is just as simple.
+
+This lambda function wraps up _requests_ to do the http POST heavy lifting. It's deliberately simple and would be useful to call with an async invocation.
+
+Sample event:
+
+```
+{
+    "user": "gsat",
+    "api-key": "<API KEY>",
+    "grid": 81,
+    "rows": [[99, 5], [5, 5], [5, 5]]
+}
+```
