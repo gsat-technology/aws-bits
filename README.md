@@ -61,3 +61,13 @@ Sample event:
 ####sig4_get.py
 
 Python script from this [AWS page](http://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html) which I've annotated with output so that it's easy to step though to understand how an HTTP request gets signed.
+
+This script just does a `describe-regions` action
+
+####sig4_get_query_string.py
+
+Python script from this [AWS page](http://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html).
+
+Outputs a Presigned URL. When used, this will **create a new user in IAM**.
+
+Note that even though this is request uses the `GET` method, it's still a modification because it uses the Query API.
