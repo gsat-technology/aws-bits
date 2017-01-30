@@ -55,3 +55,9 @@ Sample event:
     "rows": [[99, 5], [5, 5], [5, 5]]
 }
 ```
+
+###signing process
+
+####sig4_get.py
+
+Python script from this [AWS page](http://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html) which I've annotated with output so that it's easy to step though to understand how an HTTP request gets signed.
