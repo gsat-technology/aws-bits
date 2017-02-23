@@ -19,13 +19,13 @@
           </div>
         </div>
 
-        <form action="https://uploader.gsat.technology.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="key" value="uploads/${filename}">
-            <input type="hidden" name="AWSAccessKeyId" value="AKIAISN4NOWBZCBKH27Q">
+        <form action="https://somebucket.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="key" value="s3test/${filename}">
+            <input type="hidden" name="AWSAccessKeyId" value="AKIAICDLFK4XQAYOYM4Q">
             <input type="hidden" name="acl" value="private">
             <input type="hidden" name="success_action_redirect" value="http://localhost:8000/success.html">
-            <input type="hidden" name="policy" value="eyJleHBpcmF0aW9uIjogIjIwMTgtMDEtMDFUMDA6MDA6MDBaIiwKICAiY29uZGl0aW9ucyI6IFsKICAgIHsiYnVja2V0IjogInVwbG9hZGVyLmdzYXQudGVjaG5vbG9neSJ9LAogICAgWyJzdGFydHMtd2l0aCIsICIka2V5IiwgInVwbG9hZHMvIl0sCiAgICB7ImFjbCI6ICJwcml2YXRlIn0sCiAgICB7InN1Y2Nlc3NfYWN0aW9uX3JlZGlyZWN0IjogImh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9zdWNjZXNzLmh0bWwifSwKICAgIFsic3RhcnRzLXdpdGgiLCAiJENvbnRlbnQtVHlwZSIsICIiXSwKICAgIFsiY29udGVudC1sZW5ndGgtcmFuZ2UiLCAwLCAxMDQ4NTc2XQogIF0KfQo=">
-            <input type="hidden" name="signature" value="l9Hv1bomC0tiwt5r1z26WrqQJos=">
+            <input type="hidden" name="policy" value="eyJleHBpcmF0aW9uIjogIjIwMTgtMDEtMDFUMDA6MDA6MDBaIiwKICAiY29uZGl0aW9ucyI6IFsKICAgIHsiYnVja2V0IjogIjxidWNrZXRfbmFtZT4ifSwKICAgIFsic3RhcnRzLXdpdGgiLCAiJGtleSIsICJzM3Rlc3QvIl0sCiAgICB7ImFjbCI6ICJwcml2YXRlIn0sCiAgICB7InN1Y2Nlc3NfYWN0aW9uX3JlZGlyZWN0IjogImh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9zdWNjZXNzLmh0bWwifSwKICAgIFsic3RhcnRzLXdpdGgiLCAiJENvbnRlbnQtVHlwZSIsICIiXSwKICAgIFsiY29udGVudC1sZW5ndGgtcmFuZ2UiLCAwLCAxMDQ4NTc2XQogIF0KfQo=">
+            <input type="hidden" name="signature" value="Et72n51XXKv6pJg/EHUas7ZNh0c=">
             <input type="hidden" name="Content-Type" value="image/jpeg">
             <!-- Include any additional input fields here -->
 

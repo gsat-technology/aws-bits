@@ -1,18 +1,19 @@
 #!/usr/bin/env python
 
 import sys
+import os
 import base64
 import hmac, hashlib
 
 from jinja2 import Template
 
-if len(sys.argv) != 4:
-    print 'usage: ' + sys.argv[0] + ' <AWS_ACCESS_KEY> <AWS_SECRET_ACCESS_KEY> <bucket_name>'
+if len(sys.argv) != 2:
+    print 'usage: python ' + sys.argv[0] + ' <BUCKET_NAME>'
     sys.exit()
 
-AWS_ACCESS_KEY = sys.argv[1]
-AWS_SECRET_ACCESS_KEY = sys.argv[2]
-BUCKET = sys.argv[3]
+AWS_ACCESS_KEY = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+BUCKET = sys.argv[1]
 
 with open('policy_doc.json', 'r') as policy_f:
     policy = base64.b64encode(policy_f.read())
