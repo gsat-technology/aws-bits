@@ -1,6 +1,6 @@
-##AWS Bits
+## AWS Bits
 
-###s3-html-form-post
+### s3-html-form-post
 
 Based on this [AWS article](https://aws.amazon.com/articles/1434) about using an html form to POST a file to S3.
 
@@ -12,7 +12,7 @@ I created a small script to drop values into the html form (e.g. the form needs 
 
 Run the index.html file locally.
 
-####IAM
+#### IAM
 
 Note: this example is setup so that when IAM evaluates the key, it matches the name of the user `${aws:username}` to the S3 object key. So, the `policy_doc.json` file has the key 'starts-with' (and matching input param in form) set to 's3test'. You will need to make a user called 's3test' to be able to use the form (that's not compulsory - just how I set it up)
 
@@ -56,15 +56,15 @@ Sample event:
 }
 ```
 
-###signing process
+### signing process
 
-####sig4_get.py
+#### sig4_get.py
 
 Python script from this [AWS page](http://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html) which I've annotated with output so that it's easy to step though to understand how an HTTP request gets signed.
 
 This script just does a `describe-regions` action
 
-####sig4_get_query_string.py
+#### sig4_get_query_string.py
 
 Python script from this [AWS page](http://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html).
 
